@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    customAccountCommand "scimrequest" - sends any request to the SCIM server, for tests and analysis only.
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> customaccountcommand examples/gpconnect.xml examples/custom-scimrequest.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    Disabled unless the connection parameter gp_param5 is "true" (ERROR_SCIMREQUEST_DISABLED):
+    it can do anything the connection account is allowed to. Works for groups as well
+    (customsecurityobjectcommand). httpmethod: GET | POST | PUT | PATCH | DELETE; the resource is
+    relative to the base URL and may contain spaces and quotes, they are encoded. Optional parameter
+    body: JSON body for POST, PUT and PATCH. The response contains <httpstatus> and the answer below <object>.
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="command">scimrequest</parameter>
+        <parameter name="httpmethod">GET</parameter>
+        <parameter name="resource">Users?filter=userName sw "t."&amp;count=5</parameter>
+    </parameters>
+</provisioning>

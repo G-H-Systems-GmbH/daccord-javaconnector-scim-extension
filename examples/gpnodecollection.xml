@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    getNodeData - collects all users.
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> getnodedata examples/gpconnect.xml examples/gpnodecollection.xml <output-dir>
+
+    np_param1 = collection type: accounts (GET /Users) | securityobjects (GET /Groups).
+    In daccord the node name decides; np_param1 overrides it for standalone tests.
+    Page size: gp_param4 in gpconnect.xml (default 100).
+-->
+<parameters>
+    <np_params>
+        <np_param1>accounts</np_param1>
+    </np_params>
+    <skipproperties></skipproperties>
+</parameters>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    createAccount - creates a user (POST /Users).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> createaccount examples/gpconnect.xml examples/account-create.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    Every attribute is a SCIM attribute: dots build nested objects, an attribute of a schema
+    extension is given with its full URN (the URN is added to schemas), true/false become booleans.
+    Derived when not given as attribute: userName (accountname), displayName (userName),
+    active (true), password (PASSWORD); emails given as plain address becomes the primary work address.
+    The attribute names of version 1.0 still work as aliases: surname, givenname, email, status.
+    strategy: standalone (a duplicate fails) | shared (reuses the existing user) | unique (appends a
+    counter, at most namelimit attempts, default 20). The response contains <objectuniqueid> and the
+    userName actually used as <accountname>.
+-->
+<provisioning>
+    <data>
+        <attributes>
+            <attribute name="name.givenName">
+                <value>Thomas</value>
+            </attribute>
+            <attribute name="name.familyName">
+                <value>Müller</value>
+            </attribute>
+            <attribute name="emails">
+                <value>t.mueller@example.com</value>
+            </attribute>
+            <attribute name="urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department">
+                <value>IT</value>
+            </attribute>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="accountname">t.mueller</parameter>
+        <parameter name="strategy">standalone</parameter>
+    </parameters>
+</provisioning>

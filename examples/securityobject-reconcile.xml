@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    reconcileSecurityObject - reads the current state of a group (GET /Groups/{id}).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> reconcilesecurityobject examples/gpconnect.xml examples/securityobject-reconcile.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    Optional parameter reconcileattributes (see account-reconcile.xml). Note: Apache SCIMple drops
+    displayName of groups when attributes are given.
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="securityobjectuniqueid">YOUR_SCIM_GROUP_ID</parameter>
+    </parameters>
+</provisioning>

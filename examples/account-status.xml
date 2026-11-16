@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    modifyAccountStatus - enables or disables a user (PATCH /Users/{id}, path active).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> modifyaccountstatus examples/gpconnect.xml examples/account-status.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    active: true | false. The alias status (enabled | active | true sets active=true) still works.
+-->
+<provisioning>
+    <data>
+        <attributes>
+            <attribute name="active">
+                <value>false</value>
+            </attribute>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="accountuniqueid">YOUR_SCIM_USER_ID</parameter>
+    </parameters>
+</provisioning>

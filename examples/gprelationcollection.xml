@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    getRelationData - collects all group memberships.
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> getrelationdata examples/gpconnect.xml examples/gprelationcollection.xml <output-dir>
+
+    Reads all groups (GET /Groups) and writes one relation per member (group id -> user id).
+    No parameters are evaluated.
+-->
+<parameters>
+    <rp_params>
+    </rp_params>
+</parameters>

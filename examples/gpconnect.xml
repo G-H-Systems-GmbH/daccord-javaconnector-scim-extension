@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SCIM 2.0 Connection Parameters
+
+  Test call:
+      java -Dlog4j2.level=DEBUG -jar <runnable-jar> connect examples/gpconnect.xml
+
+  gp_param1   = SCIM Base URL incl. version path
+  gp_param2   = Auth type: "basic" or "bearer"
+  gp_param3   = Username (Basic Auth only)
+  gp_param4   = Page size (default: 100)
+  gp_param5   = "true" enables the custom command scimrequest (tests and analysis only, default off)
+  gp_pwparam1 = Password (Basic Auth) or Bearer Token
+-->
+<parameters>
+  <gp_param1>http://localhost:30880/v2</gp_param1>
+  <gp_param2>basic</gp_param2>
+  <gp_param3>scimadmin</gp_param3>
+  <gp_param4>100</gp_param4>
+  <gp_param5></gp_param5>
+  <gp_param6></gp_param6>
+  <gp_param7></gp_param7>
+  <gp_param8></gp_param8>
+  <gp_param9></gp_param9>
+  <gp_param10></gp_param10>
+  <gp_pwparam1>YOUR_PASSWORD_OR_TOKEN</gp_pwparam1>
+  <gp_pwparam2></gp_pwparam2>
+  <gp_pwparam3></gp_pwparam3>
+  <gp_pwparam4></gp_pwparam4>
+</parameters>

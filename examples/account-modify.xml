@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    modifyAccount - changes a user (PATCH /Users/{id}, one replace operation per attribute).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> modifyaccount examples/gpconnect.xml examples/account-modify.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    Every attribute becomes a replace operation with the attribute name as path.
+    The aliases accountname (userName, displayName), surname, givenname, email and status still work.
+-->
+<provisioning>
+    <data>
+        <attributes>
+            <attribute name="name.familyName">
+                <value>Müller-Neu</value>
+            </attribute>
+            <attribute name="title">
+                <value>Consultant</value>
+            </attribute>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="accountuniqueid">YOUR_SCIM_USER_ID</parameter>
+    </parameters>
+</provisioning>

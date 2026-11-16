@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    moveAccount - moves a user (PATCH /Users/{id}, same as modifyAccount).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> moveaccount examples/gpconnect.xml examples/account-move.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    SCIM has no containers (organizational units): a move changes organizational attributes.
+-->
+<provisioning>
+    <data>
+        <attributes>
+            <attribute name="urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department">
+                <value>Sales</value>
+            </attribute>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="accountuniqueid">YOUR_SCIM_USER_ID</parameter>
+    </parameters>
+</provisioning>

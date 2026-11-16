@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    createSecurityObject - creates a group (POST /Groups).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> createsecurityobject examples/gpconnect.xml examples/securityobject-create.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+
+    Every attribute is a SCIM attribute (see account-create.xml). displayName is derived from
+    securityobjectname when not given. The response contains the new SCIM id as <objectuniqueid>.
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="securityobjectname">my-new-group</parameter>
+    </parameters>
+</provisioning>

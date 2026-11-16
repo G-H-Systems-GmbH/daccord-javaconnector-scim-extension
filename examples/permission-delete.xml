@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    deletePermission - removes a user from a group (PATCH /Groups/{id}, op remove members[value eq "..."]).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> deletepermission examples/gpconnect.xml examples/permission-delete.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="accountuniqueid">YOUR_SCIM_USER_ID</parameter>
+        <parameter name="securityobjectuniqueid">YOUR_SCIM_GROUP_ID</parameter>
+    </parameters>
+</provisioning>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    deleteSecurityObject - deletes a group (DELETE /Groups/{id}).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> deletesecurityobject examples/gpconnect.xml examples/securityobject-delete.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="securityobjectuniqueid">YOUR_SCIM_GROUP_ID</parameter>
+    </parameters>
+</provisioning>

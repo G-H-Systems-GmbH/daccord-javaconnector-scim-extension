@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    renameSecurityObject - renames a group (PATCH /Groups/{id}, path displayName; same as modify).
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> renamesecurityobject examples/gpconnect.xml examples/securityobject-rename.xml
+
+    <parameters> are identifiers and steering values (pp_config_<name> in the extension),
+    <attributes> are SCIM attributes (pp_data_<name>).
+-->
+<provisioning>
+    <data>
+        <attributes>
+        </attributes>
+    </data>
+    <parameters>
+        <parameter name="securityobjectuniqueid">YOUR_SCIM_GROUP_ID</parameter>
+        <parameter name="securityobjectname">renamed-group</parameter>
+    </parameters>
+</provisioning>

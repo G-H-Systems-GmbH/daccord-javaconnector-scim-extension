@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.guh.extension.connector</groupId>
+	<artifactId>daccord-javaconnector-scim-extension</artifactId>
+	<version>2.0.0</version>
+	<name>daccord-javaconnector-scim-extension</name>
+	<description>daccord JavaConnector Extension for SCIM 2.0 (RFC 7643/7644)</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- Switches -->
+		<skipTests>true</skipTests>
+		<!-- Versions -->
+		<log4j.version>2.26.1</log4j.version>
+		<gadget-core.version>4.0.11</gadget-core.version>
+		<connector-core.version>2.3.3</connector-core.version>
+		<!-- Plugin Versions  -->
+		<compiler-plugin.version>3.16.0</compiler-plugin.version>
+		<release-plugin.version>3.3.1</release-plugin.version>
+		<surefire-plugin.version>3.6.1</surefire-plugin.version>
+		<shade-plugin.version>3.6.2</shade-plugin.version>
+		
+		<jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
+	</properties>
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<targetPath>META-INF</targetPath>
+				<includes>
+					<include>license.txt</include>
+				</includes>
+			</resource>
+		</resources>
+		<!-- To use the plugin goals in your POM or parent POM -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<release>21</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire-plugin.version}</version>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-shade-plugin</artifactId>
+			    <version>${shade-plugin.version}</version>
+			    <executions>
+			        <execution>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>shade</goal>
+			            </goals>
+			            <configuration>
+			                <shadedArtifactAttached>true</shadedArtifactAttached>
+			                <shadedClassifierName>runnable</shadedClassifierName>
+			                <transformers>
+			                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+			                        <mainClass>de.guh.extension.connector.scim.Main</mainClass>
+			                    </transformer>
+			                </transformers>
+			                <filters>
+			                    <filter>
+			                        <artifact>*:*</artifact>
+			                        <excludes>
+			                            <exclude>META-INF/*.SF</exclude>
+			                            <exclude>META-INF/*.DSA</exclude>
+			                            <exclude>META-INF/*.RSA</exclude>
+			                        </excludes>
+			                    </filter>
+			                </filters>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+	
+		<!-- <LOG4J> -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+ 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${jakarta.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- <//LOG4J> -->
+	
+		<!-- INCHORUS -->
+		<dependency>
+			<groupId>de.guh.connector</groupId>
+			<artifactId>daccord-connector-core</artifactId>
+			<version>${connector-core.version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>de.guh.gadget</groupId>
+			<artifactId>inchorus-gadget-core</artifactId>
+			<version>${gadget-core.version}</version>
+		</dependency>
+		<!-- // INCHORUS -->
+
+	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>${release-plugin.version}</version>
+						<configuration>
+							<checkModificationExcludes>
+								<checkModificationExclude>.classpath</checkModificationExclude>
+								<checkModificationExclude>.settings</checkModificationExclude>
+								<!-- <checkModificationExclude>target</checkModificationExclude> -->
+								<checkModificationExclude>${project.build.directory}\</checkModificationExclude>
+							</checkModificationExcludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<repositories>
+		<repository>
+			<id>inchorus</id>
+			<name>inchorus public repository</name>
+			<url>https://www.inchorus.de/repository/maven-releases/</url>
+		</repository>
+	</repositories>
+</project>

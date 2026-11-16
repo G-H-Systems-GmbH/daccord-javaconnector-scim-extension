@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    getRelationPreview - first group memberships.
+
+    Test call:
+        java -Dlog4j2.level=DEBUG -jar <runnable-jar> getrelationpreview examples/gpconnect.xml examples/gprelationpreview.xml
+
+    Reads all groups (GET /Groups) and writes one relation per member (group id -> user id).
+    No parameters are evaluated.
+-->
+<parameters>
+    <cp_params>
+    </cp_params>
+</parameters>
